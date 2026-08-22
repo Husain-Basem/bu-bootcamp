@@ -40,4 +40,14 @@ public class ContactTest {
   void toString_containsPhone() {
     assertTrue(alanContact.toString().contains("555-0001"));
   }
+
+  @Test
+  void contactsWithSameName_areIndependentObjects() {
+    Contact contact1 = new Contact("Ada Lovelace", "555-1111");
+    Contact contact2 = new Contact("Ada Lovelace", "555-2222");
+
+    assertNotSame(contact1, contact2);
+    assertEquals("555-1111", contact1.getPhone());
+    assertEquals("555-2222", contact2.getPhone());
+  }
 } 
